@@ -1,5 +1,6 @@
 
 import 'dart:io';
+import 'dart:math';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
@@ -21,6 +22,7 @@ class FirebaseNotificatons
   }
 
   void firebaseCloudMessageListener(BuildContext context)async {
+    print("Controll 1");
     NotificationSettings settings=await _messaging.requestPermission(
       alert: true,
       announcement: true,
@@ -37,7 +39,7 @@ class FirebaseNotificatons
 
     //Sunscribe to topic
     //We will send to topic for group notification
-    _messaging.subscribeToTopic("edmtdev demo").
+    _messaging.subscribeToTopic("com.example.foodapp1").
     whenComplete(() => print("Subcribe ok"));
 
     //Handle message
@@ -88,6 +90,6 @@ var platForm=NotificationDetails(
   android: androidChannel,
   iOS: ios);
 await NotificationHandler.flutterLocalNotificationPlugin
-.show(0, title, body, platForm,payload: "My payload");
+.show(Random().nextInt(1000), title, body, platForm,payload: "My payload");
  }
 }
