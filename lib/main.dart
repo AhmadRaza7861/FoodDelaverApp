@@ -1,9 +1,13 @@
+
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:foodapp1/firebase_notification_handler.dart';
 
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   FirebaseApp app=await Firebase.initializeApp();
+  FirebaseMessaging.onBackgroundMessage(_backgroundHandler);
 
   runApp(MyApp(app: app,));
 }
@@ -33,19 +37,37 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget
-{
-  String title;
-  FirebaseApp app;
+class MyHomePage extends StatefulWidget {
+String title;
+FirebaseApp app;
 
-  MyHomePage({required this.title,required this.app});
+  MyHomePage({required this.title, required this.app});
 
   @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  FirebaseNotificatons firebaseNotificatons=new FirebaseNotificatons();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      firebaseNotificatons.setupFirebase(context);
+    });
+  }
+  @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
-      body: Text("${app.name}"),
+      body: Center(child: Text("CLOUD MESSAGING"),),
     );
   }
+}
 
+Future<void> _backgroundHandler(RemoteMessage message) async{
+  await Firebase.initializeApp();
+  print("Handle background service $message");
+  dynamic data=message.data['data'];
+  FirebaseNotificatons.showNotification(data['title'], data['body']);
 }

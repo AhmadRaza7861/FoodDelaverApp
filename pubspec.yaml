@@ -31,6 +31,8 @@ dependencies:
   firebase_core: any
   firebase_database: any
   get: any
+  firebase_messaging: any
+  flutter_local_notifications: any
 
 dev_dependencies:
   flutter_test:
