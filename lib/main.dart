@@ -1,5 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:foodapp1/Strings/main_strings.dart';
+import 'package:foodapp1/ViewModel/main_view_model_imp.dart';
+import 'package:foodapp1/model/restaurant_model.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,11 +44,39 @@ class MyHomePage extends StatelessWidget
 
   MyHomePage({required this.title,required this.app});
 
+  final viewModel=MainViewModelImp();
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      body: Text("${app.name}"),
+      appBar: AppBar(
+        title: Text(restaurantText,
+        style: GoogleFonts.jetBrainsMono(
+          fontWeight: FontWeight.w900,
+          color: Colors.black
+        ),
+        ),
+        backgroundColor: Colors.white,
+      ),
+      body: FutureBuilder(
+        future: viewModel.DisplayRestaurantList(),
+        builder: (context,snapshot)
+          {
+            if(snapshot.connectionState==ConnectionState.waiting)
+              {
+                return Center(child: CircularProgressIndicator(),);
+              }
+            else{
+              var lst=snapshot.data as List<RestaurantModel>;
+              return ListView.builder(itemCount: lst.length,
+              itemBuilder: (context,index)
+                {
+                  return Text(lst[index].phone);
+                },);
+            }
+          }
+      )
     );
   }
 

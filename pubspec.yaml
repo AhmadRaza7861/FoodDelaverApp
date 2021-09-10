@@ -31,6 +31,7 @@ dependencies:
   firebase_core: any
   firebase_database: any
   get: any
+  google_fonts: any
 
 dev_dependencies:
   flutter_test:
