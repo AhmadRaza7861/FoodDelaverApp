@@ -1,8 +1,15 @@
+
+
+import 'package:auto_animated/auto_animated.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:foodapp1/Strings/main_strings.dart';
 import 'package:foodapp1/ViewModel/main_view_model_imp.dart';
 import 'package:foodapp1/model/restaurant_model.dart';
+import 'package:foodapp1/widgets/common/common_widgets.dart';
+import 'package:foodapp1/widgets/main/restaurant_image_widget.dart';
+import 'package:foodapp1/widgets/main/restaurant_info.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 Future<void> main() async{
@@ -69,15 +76,42 @@ class MyHomePage extends StatelessWidget
               }
             else{
               var lst=snapshot.data as List<RestaurantModel>;
-              return ListView.builder(itemCount: lst.length,
-              itemBuilder: (context,index)
-                {
-                  return Text(lst[index].phone);
-                },);
+                 return Container(
+                   padding: EdgeInsets.only(top: 10),
+                   child: LiveList(
+                     itemCount: lst.length,
+                     showItemDuration: Duration(milliseconds: 350),
+                     showItemInterval: Duration(milliseconds: 150),
+                     reAnimateOnVisibility: true,
+                     scrollDirection: Axis.vertical,
+                     itemBuilder: AnimationItemBuilder((index)=>InkWell(
+                       child: InkWell(
+                         onTap: ()
+                         {
+
+                         },
+                         child: Container(
+                           width: double.infinity,
+                           height: MediaQuery.of(context).size.height/2.5 * 1.4,
+                           padding: EdgeInsets.only(top: 10),
+                           child: Column(
+                             crossAxisAlignment: CrossAxisAlignment.start,
+                             children: [
+                               RestaurentImageWidget(imageUrl: lst[index].imageUrl,),
+                               //Text("${lst[index].imageUrl}"),
+                               RestaurantNameAndAddress(lst: lst,index:index)
+                             ],
+                           ),
+                         ),
+                       ),
+                     )),
+                   ),
+                 );
             }
           }
       )
     );
-  }
-
 }
+}
+
+

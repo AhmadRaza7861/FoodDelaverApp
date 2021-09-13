@@ -32,6 +32,8 @@ dependencies:
   firebase_database: any
   get: any
   google_fonts: any
+  cached_network_image: any
+  auto_animated: any
 
 dev_dependencies:
   flutter_test:
