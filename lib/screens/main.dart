@@ -5,12 +5,17 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:foodapp1/Strings/main_strings.dart';
-import 'package:foodapp1/ViewModel/main_view_model_imp.dart';
+
 import 'package:foodapp1/model/restaurant_model.dart';
+import 'package:foodapp1/screens/restaurant_home.dart';
+import 'package:foodapp1/state/main_state_controller.dart';
 import 'package:foodapp1/widgets/common/common_widgets.dart';
 import 'package:foodapp1/widgets/main/restaurant_image_widget.dart';
 import 'package:foodapp1/widgets/main/restaurant_info.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../ViewModel/main_vm/main_view_model_imp.dart';
 
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +30,7 @@ class MyApp extends StatelessWidget {
   MyApp({required this.app}); // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -52,6 +57,7 @@ class MyHomePage extends StatelessWidget
   MyHomePage({required this.title,required this.app});
 
   final viewModel=MainViewModelImp();
+final mainStateController=Get.put(MainStateController());
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +94,8 @@ class MyHomePage extends StatelessWidget
                        child: InkWell(
                          onTap: ()
                          {
-
+                           mainStateController.SelectedRestaurant.value=lst[index];
+                           Get.to(()=>RestaurantHome());
                          },
                          child: Container(
                            width: double.infinity,

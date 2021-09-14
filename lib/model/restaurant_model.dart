@@ -5,6 +5,7 @@ class RestaurantModel
   String name="";
   String paymentUrl="";
   String phone="";
+  String restaurant_id="";
 
   RestaurantModel(
       {required this.address, required this.imageUrl,
