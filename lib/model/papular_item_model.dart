@@ -8,10 +8,10 @@ class PapularItemModel {
 
   PapularItemModel.fromJsom(Map<String,dynamic>fromJson)
   {
-    name=fromJson["name"];
-    foodId=fromJson["food_id"];
-    menuId=fromJson["menu_id"];
-    image=fromJson["image"];
+    name=fromJson["name"]==null ?"":fromJson["name"];
+    foodId=fromJson["food_id"]==null?"":fromJson["food_id"];
+    menuId=fromJson["menu_id"]==null?"":fromJson["menu_id"];
+    image=fromJson["image"]==null ? "":fromJson["image"];
   }
   Map<String,dynamic> toJson()
   {

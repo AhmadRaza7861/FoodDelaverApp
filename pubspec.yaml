@@ -34,6 +34,7 @@ dependencies:
   google_fonts: any
   cached_network_image: any
   auto_animated: any
+  carousel_slider: any
 
 dev_dependencies:
   flutter_test:
