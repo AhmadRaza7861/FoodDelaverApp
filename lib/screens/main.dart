@@ -8,6 +8,7 @@ import 'package:foodapp1/Strings/main_strings.dart';
 
 import 'package:foodapp1/model/restaurant_model.dart';
 import 'package:foodapp1/screens/restaurant_home.dart';
+import 'package:foodapp1/screens/restaurant_home_detail.dart';
 import 'package:foodapp1/state/main_state_controller.dart';
 import 'package:foodapp1/widgets/common/common_widgets.dart';
 import 'package:foodapp1/widgets/main/restaurant_image_widget.dart';

@@ -1,7 +1,7 @@
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
 import 'package:foodapp1/Strings/restaurant_home_string.dart';
-import 'package:foodapp1/ViewModel/Restaurant_home_vm/restaurant_home_vm.dart';
+import 'package:foodapp1/ViewModel/Restaurant_home_detail_vm/restaurant_home_detail_vm.dart';
 import 'package:foodapp1/model/papular_item_model.dart';
 import 'package:foodapp1/state/main_state_controller.dart';
 import 'package:foodapp1/widgets/common/common_widgets.dart';
@@ -14,7 +14,7 @@ class MostPapularWidget extends StatelessWidget {
     required this.mainStateController,
   }) : super(key: key);
 
-  final RestaurantHomeViewModel restaurantHomeViewModel;
+  final RestaurantHomeDetailViewModel restaurantHomeViewModel;
   final MainStateController mainStateController;
 
   @override

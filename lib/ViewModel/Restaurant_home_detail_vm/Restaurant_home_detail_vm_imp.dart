@@ -1,10 +1,10 @@
-import 'package:foodapp1/ViewModel/Restaurant_home_vm/restaurant_home_vm.dart';
+import 'package:foodapp1/ViewModel/Restaurant_home_detail_vm/restaurant_home_detail_vm.dart';
 import 'package:foodapp1/firebase/best_deals_referance.dart';
 import 'package:foodapp1/firebase/papular_ref.dart';
 import 'package:foodapp1/model/papular_item_model.dart';
 import 'package:foodapp1/model/restaurant_model.dart';
 
-class RestaurantHomeVmImp implements RestaurantHomeViewModel
+class RestaurantHomeDetailVmImp implements RestaurantHomeDetailViewModel
 {
   @override
   Future<List<PapularItemModel>> DisplayPapularItemModel(String restaurantId) {

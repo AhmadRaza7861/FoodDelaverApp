@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:foodapp1/ViewModel/Restaurant_home_vm/Restaurant_home_vm_imp.dart';
+import 'package:foodapp1/ViewModel/Restaurant_home_detail_vm/Restaurant_home_detail_vm_imp.dart';
 import 'package:foodapp1/model/papular_item_model.dart';
 import 'package:foodapp1/state/main_state_controller.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,7 +14,7 @@ class BestDealsWidget extends StatelessWidget {
     required this.mainStateController,
   }) : super(key: key);
 
-  final RestaurantHomeVmImp viewModel;
+  final RestaurantHomeDetailVmImp viewModel;
   final MainStateController mainStateController;
 
   @override
