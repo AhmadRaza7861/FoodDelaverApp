@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:foodapp1/Strings/restaurant_home_string.dart';
+import 'package:foodapp1/ViewModel/menu_vm/menu_viewmodel_imp.dart';
 import 'package:foodapp1/const/const.dart';
 import 'package:foodapp1/widgets/Manu/category_menu_widget.dart';
 import 'package:foodapp1/widgets/Manu/home_menu_widget.dart';
@@ -9,6 +10,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class MenuScreen extends StatelessWidget {
   final ZoomDrawerController zoomDrawerController;
+  final viewModel=MenuViewModelImp();
 
   MenuScreen({required this.zoomDrawerController});
 
@@ -46,7 +48,7 @@ class MenuScreen extends StatelessWidget {
             Divider(
               thickness: 1,
             ),
-           CategoriesMenuWidget(),
+           CategoriesMenuWidget(icon: Icons.list,menuName: categoriesText,callback: viewModel.NavigateCategories,),
           ],
         ),
       ),
