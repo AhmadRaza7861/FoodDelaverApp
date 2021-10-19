@@ -5,7 +5,7 @@ class AddonModel
   AddonModel.fromJson(Map<String,dynamic>json)
   {
     name=json["name"];
-    price=json["price"];
+    price=double.parse(json["price"].toString());
   }
   Map<String,dynamic>toJson()
   {

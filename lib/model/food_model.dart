@@ -22,13 +22,17 @@ class FoodModel
   FoodModel.fromJson(Map<String,dynamic>json)
   {
     name=json["name"];
+    price=double.parse(json['price'].toString());
     description=json["description"];
     id=json["id"];
     image=json["image"];
     if(json["size"]!=null)
       {
         size=List<SizeModel>.empty(growable: true);
-        this.size=json["size"].forEach((e)=>size.add(SizeModel.fromJson(e)));
+       json["size"].forEach((e)
+       {
+         size.add(SizeModel.fromJson(e));
+       });
       }
     if(json["addon"]!=null)
       {
